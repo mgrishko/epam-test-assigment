@@ -8,6 +8,7 @@ require_relative 'errors/path_error'
 require_relative 'validators/file'
 require_relative 'validators/log_line'
 require_relative 'models/log_rec'
+require_relative 'counter'
 
 module Parser
   class Runner
@@ -18,9 +19,10 @@ module Parser
     def call
       Parser::Validators::File.new(file).valid?
 
-      Parser::Loader.new(file).call
-      # count
-      # sort
+      data = Parser::Loader.new(file).call
+      visit_results = Parser::Counter.new(data).count_all
+      unique_results = Parser::Counter.new(data).count_uniq
+
       # print
     end
 
