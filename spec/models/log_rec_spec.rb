@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe LogRec do
+RSpec.describe Parser::Models::LogRec do
   subject { described_class.new(path: '/example', ip: '111.111.111.111') }
 
   it 'creates an instance of Parser::Models::LogRec and have instaled attributes' do

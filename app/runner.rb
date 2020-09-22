@@ -7,7 +7,7 @@ module Parser
     end
 
     def call
-      # validate input
+      Parser::Validators::File.new(file).valid?
       # load and parse
       # count
       # sort
