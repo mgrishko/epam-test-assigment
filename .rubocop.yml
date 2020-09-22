@@ -1,0 +1,53 @@
+require:
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 2.6.5
+  NewCops: enable
+
+Layout/HashAlignment:
+  EnforcedColonStyle:
+    - table
+    - key
+
+Lint/MissingSuper:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/BlockLength:
+  Max: 25
+  ExcludedMethods: [describe, context, group]
+
+Metrics/ClassLength:
+  Max: 120
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 15
+
+RSpec/ContextWording:
+  Prefixes:
+    - when
+    - with
+    - without
+    - if
+    - unless
+    - for
+
+RSpec/MultipleExpectations:
+  Max: 5
+
+RSpec/LetSetup:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/ExponentialNotation:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
