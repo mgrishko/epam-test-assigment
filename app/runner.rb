@@ -9,6 +9,7 @@ require_relative 'validators/file'
 require_relative 'validators/log_line'
 require_relative 'models/log_rec'
 require_relative 'counter'
+require_relative 'printer'
 
 module Parser
   class Runner
@@ -23,7 +24,7 @@ module Parser
       visit_results = Parser::Counter.new(data).count_all
       unique_results = Parser::Counter.new(data).count_uniq
 
-      # print
+      Parser::Printer.new(visit_results, unique_results).call
     end
 
     private
