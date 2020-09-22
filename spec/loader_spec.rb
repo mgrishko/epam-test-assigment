@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Parser::Loader do
-  subject { described_class.new(parsed_file) }
+  subject { described_class.build(parsed_file) }
 
   let(:parsed_file) { File.join(Dir.pwd, 'spec', 'fixtures', 'webserver.log') }
 
@@ -22,7 +22,7 @@ RSpec.describe Parser::Loader do
       let(:parsed_file) { File.join(Dir.pwd, 'spec', 'fixtures', 'webserver_broken_data.log') }
 
       it 'returns array of Parser::Models::LogRec instances' do
-        expect { subject.call }.to raise_error(Parser::Errors::PathError)
+        expect { subject.call }.to raise_error Parser::Errors::PathError
       end
     end
   end

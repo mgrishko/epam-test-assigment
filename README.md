@@ -1,4 +1,5 @@
-## Description
+#### Description
+
 Application that receives a log as argument (webserver.log is provided).
 
 Return the following:
@@ -10,8 +11,8 @@ Return the following:
   * /about/2 8 unique views
   * /index 5 unique views
 
-## Instalation && Usage
-- Ruby (2.6.5) with gems
+#### Instalation && Usage
+  * Ruby (2.6.5) with gems
   * rubocop
   * rspec
   * simplecov
@@ -20,3 +21,23 @@ Return the following:
 $ bundle install
 $ bin/parser.rb logs/webserver.log
 ```
+
+#### Tests && Coverage && Linter
+This also show test coverage from the Simplecov.
+```
+$ rspec
+```
+And ruby linter - Rubocop:
+```
+$ rubocop
+```
+
+#### Approach description
+* Use SOLID, TDD, OO
+* Validates file existence and required extension and valid content of file
+* Count, sort and present file content
+
+#### Possible Improvements
+* Use dry-rb stack, for (mixins, do-monads) for standartize responds from services and more clean code
+* Extend validations, maybe for real case, need more strict validations for ip example (ip =~ Regexp.union([Resolv::IPv4::Regex, Resolv::IPv6::Regex]))
+* Load file by chunks
