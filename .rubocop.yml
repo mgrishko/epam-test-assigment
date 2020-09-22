@@ -37,6 +37,12 @@ RSpec/ContextWording:
     - unless
     - for
 
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/FilePath:
+  Enabled: false
+
 RSpec/MultipleExpectations:
   Max: 5
 
