@@ -2,7 +2,7 @@
 
 module Parser
   module Counter
-    class Main < Base
+    class Total < Base
       def self.count(log_data)
         base_count(log_data)
       end

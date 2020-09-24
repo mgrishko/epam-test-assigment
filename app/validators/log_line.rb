@@ -11,7 +11,7 @@ module Parser
         @ip = ip
       end
 
-      def valid?
+      def validate!
         raise Parser::Errors::PathError unless PATH_REGEX.match?(path)
         raise Parser::Errors::IpError unless IP_REGEX.match?(ip)
       end

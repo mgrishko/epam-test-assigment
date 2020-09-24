@@ -11,8 +11,8 @@ RSpec.describe Parser::Processor do
   end
 
   describe '.run' do
-    context 'for main counter' do
-      let(:counter) { Parser::Counter::Main }
+    context 'for total counter' do
+      let(:counter) { Parser::Counter::Total }
       let(:expected_result) { { '/example' => 3, '/second_example' => 1 } }
 
       it do

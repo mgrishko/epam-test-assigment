@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe Parser::Validators::File do
-  subject { described_class.new(file).valid? }
+  subject { described_class.new(file).validate! }
 
-  describe '#valid?' do
+  describe '#validate!' do
     context 'when file path is invalid' do
       let(:file) { '' }
 

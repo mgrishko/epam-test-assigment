@@ -8,12 +8,12 @@ module Parser
     end
 
     def call
-      visit_results.each do |k, v|
-        puts "#{k} #{v} visits"
+      visit_results.each do |path, times|
+        puts "#{path} #{times} visits"
       end
       puts ''
-      unique_results.each do |k, v|
-        puts "#{k} #{v} unique views"
+      unique_results.each do |path, times|
+        puts "#{path} #{times} unique views"
       end
     end
 

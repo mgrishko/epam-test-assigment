@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Parser::Counter::Main do
+RSpec.describe Parser::Counter::Total do
   let(:data) do
     [
       Parser::Models::LogRec.new(path: '/example', ip: '111.111.111.111'),

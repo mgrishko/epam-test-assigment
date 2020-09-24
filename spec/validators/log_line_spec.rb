@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe Parser::Validators::LogLine do
-  subject { described_class.new(path, ip).valid? }
+  subject { described_class.new(path, ip).validate! }
 
-  describe '#valid?' do
+  describe '#validate!' do
     context 'when path is invalid' do
       let(:path) { 'example' }
       let(:ip) { '111.111.111.111' }

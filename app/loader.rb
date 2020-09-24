@@ -27,7 +27,7 @@ module Parser
     attr_reader :file, :log_rec, :validator
 
     def validate_content(path, ip)
-      validator.new(path, ip).valid?
+      validator.new(path, ip).validate!
     end
   end
 end

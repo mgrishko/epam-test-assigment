@@ -9,7 +9,7 @@ module Parser
         @file = file
       end
 
-      def valid?
+      def validate!
         raise Parser::Errors::FileError unless ::File.exist?(file)
         raise Parser::Errors::FileExtensionError unless REQUIRED_FORMATS.include? ::File.extname(file)
       end
