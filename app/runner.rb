@@ -8,7 +8,9 @@ require_relative 'errors/path_error'
 require_relative 'validators/file'
 require_relative 'validators/log_line'
 require_relative 'models/log_rec'
+require_relative 'processor'
 require_relative 'counters/base'
+require_relative 'counters/main'
 require_relative 'counters/uniq'
 require_relative 'printer'
 
@@ -22,8 +24,7 @@ module Parser
       validate_file
 
       log_data = load_data
-      visit_results = count_visit_results(log_data)
-      unique_results = count_unique_results(log_data)
+      visit_results, unique_results = count(log_data)
 
       print_results(visit_results, unique_results)
     end
@@ -38,12 +39,12 @@ module Parser
       Parser::Loader.build(file).call
     end
 
-    def count_visit_results(log_data)
-      Parser::Counter::Base.count(log_data)
+    def count(log_data)
+      counters.map { |counter| Parser::Processor.run(log_data, counter) }
     end
 
-    def count_unique_results(log_data)
-      Parser::Counter::Uniq.count_uniq(log_data)
+    def counters
+      [Parser::Counter::Main, Parser::Counter::Uniq]
     end
 
     def print_results(visit_results, unique_results)

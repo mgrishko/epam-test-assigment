@@ -10,7 +10,7 @@ RSpec.describe Parser::Counter::Base do
     ]
   end
 
-  describe '#count' do
+  describe '.base_count' do
     let(:expected_result) { { '/example' => 3, '/second_example' => 1 } }
 
     it do
@@ -18,11 +18,11 @@ RSpec.describe Parser::Counter::Base do
     end
 
     it 'returns a hash' do
-      expect(described_class.count(data)).to be_kind_of(Hash)
+      expect(described_class.base_count(data)).to be_kind_of(Hash)
     end
 
     it 'returns sorted data' do
-      expect(described_class.count(data)).to eql(expected_result)
+      expect(described_class.base_count(data)).to eql(expected_result)
     end
   end
 end
