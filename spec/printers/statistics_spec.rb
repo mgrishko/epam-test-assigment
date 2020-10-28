@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe Parser::Printer do
-  subject { described_class.new(visit_results, unique_results) }
+RSpec.describe Parser::Printers::Statistics do
+  subject { described_class.print({ visits: visit_results, unique_views: unique_results, errors: error_results }) }
 
   let(:visit_results) do
     {
@@ -23,6 +23,11 @@ RSpec.describe Parser::Printer do
       '/about' => 21
     }
   end
+  let(:error_results) do
+    {
+      'failure_path' => 1
+    }
+  end
   let(:expected_result) do
     <<~HEREDOC
       /about/2 90 visits
@@ -32,24 +37,21 @@ RSpec.describe Parser::Printer do
       /help_page/1 80 visits
       /home 78 visits
 
-      /index 23 unique views
-      /home 23 unique views
-      /contact 23 unique views
-      /help_page/1 23 unique views
-      /about/2 22 unique views
-      /about 21 unique views
-    HEREDOC
-  end
+      /index 23 unique_views
+      /home 23 unique_views
+      /contact 23 unique_views
+      /help_page/1 23 unique_views
+      /about/2 22 unique_views
+      /about 21 unique_views
 
-  describe '#new' do
-    it 'creates instance of Parser::Printer class' do
-      expect(subject).to be_kind_of(described_class)
-    end
+      failure_path 1 errors
+
+    HEREDOC
   end
 
   context 'when prints views' do
     it 'prints parsed log data' do
-      expect { subject.call }.to output(expected_result).to_stdout
+      expect { subject }.to output(expected_result).to_stdout
     end
   end
 end

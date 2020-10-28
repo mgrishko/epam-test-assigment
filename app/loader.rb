@@ -16,9 +16,7 @@ module Parser
       IO.foreach(file).map do |line|
         path, ip = line.split
 
-        validate_content(path, ip)
-
-        log_rec.new(path: path, ip: ip)
+        log_rec.new(path: path, ip: ip, errors: validate_content(path, ip))
       end
     end
 
@@ -27,7 +25,7 @@ module Parser
     attr_reader :file, :log_rec, :validator
 
     def validate_content(path, ip)
-      validator.new(path, ip).validate!
+      validator.new(path, ip).validate
     end
   end
 end

@@ -14,12 +14,16 @@ RSpec.describe Parser::Runner do
       /contact 4 visits
       /about 2 visits
 
-      /help_page/1 5 unique views
-      /index 4 unique views
-      /home 4 unique views
-      /about/2 3 unique views
-      /contact 3 unique views
-      /about 2 unique views
+      /help_page/1 5 unique_views
+      /index 4 unique_views
+      /home 4 unique_views
+      /about/2 3 unique_views
+      /contact 3 unique_views
+      /about 2 unique_views
+
+      failure_page 1 errors
+
+      path: failure_page with ip: localhost has errors: path - incorrect; ip - incorrect
     HEREDOC
   end
 

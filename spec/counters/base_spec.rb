@@ -17,6 +17,10 @@ RSpec.describe Parser::Counter::Base do
       expect(described_class).to respond_to(:count)
     end
 
+    it 'raise NotImplementedError' do
+      expect { described_class.count(data) }.to raise_error(NotImplementedError)
+    end
+
     it 'returns a hash' do
       expect(described_class.base_count(data)).to be_kind_of(Hash)
     end

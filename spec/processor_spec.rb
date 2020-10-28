@@ -3,10 +3,10 @@
 RSpec.describe Parser::Processor do
   let(:data) do
     [
-      Parser::Models::LogRec.new(path: '/example', ip: '111.111.111.111'),
-      Parser::Models::LogRec.new(path: '/example', ip: '111.111.111.111'),
-      Parser::Models::LogRec.new(path: '/example', ip: '222.222.222.222'),
-      Parser::Models::LogRec.new(path: '/second_example', ip: '222.222.222.222')
+      Parser::Models::LogRec.new(path: '/example', ip: '111.111.111.111', errors: {}),
+      Parser::Models::LogRec.new(path: '/example', ip: '111.111.111.111', errors: {}),
+      Parser::Models::LogRec.new(path: '/example', ip: '222.222.222.222', errors: {}),
+      Parser::Models::LogRec.new(path: '/second_example', ip: '222.222.222.222', errors: {})
     ]
   end
 
